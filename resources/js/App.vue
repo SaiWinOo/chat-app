@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ this.counter }}</h1>
+    <h1>{{ this.getCounter }}</h1>
     <button @click="increment">Increment</button>
   </div>
 </template>
@@ -11,8 +11,11 @@ import { useCounterStore } from './Pinia/stores/useCounterStore.pinia';
 
 export default {
   computed: {
-    ...mapState(useCounterStore, ['counter']),
-    ...mapActions(useCounterStore, ['increment'])
+    ...mapState(useCounterStore, ['getCounter']),
+  },
+
+  methods: {
+    ...mapActions(useCounterStore, ['increment']),
   }
 }
 </script>
