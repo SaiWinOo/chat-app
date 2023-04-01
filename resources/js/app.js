@@ -15,12 +15,14 @@ window.Echo = new Echo({
     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
     enabledTransports: ['ws', 'wss'],
 });
-
+import mp3 from './noti/noti.mp3';
 window.Echo.channel('test-channel')
   .listen('TestingEvent', (e) => {
     localStorage.setItem('message', e.message);
+    let audio = new Audio(mp3);
+    audio.play();
   });
-  
+
 const app = createApp(App);
 app
   .use(pinia)
